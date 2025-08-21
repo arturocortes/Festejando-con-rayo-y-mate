@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rayo y Mate - Fiestas Infantiles Inolvidables</title>
+  <title>Lo que Ofrecemos - Rayo y Mate</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Variables de colores */
+    /* Mismo CSS de la página principal */
     :root {
-      --primary: #E10600; /* Rojo como Rayo McQueen */
-      --secondary: #FFD700; /* Amarillo como Relámpago */
-      --accent: #0066CC; /* Azul como Mate */
+      --primary: #E10600;
+      --secondary: #FFD700;
+      --accent: #0066CC;
       --dark: #1C1C1C;
       --light: #f8f8f8;
     }
     
-    /* Estilos generales */
     * {
       margin: 0;
       padding: 0;
@@ -27,6 +26,7 @@
       color: var(--dark);
       line-height: 1.6;
       overflow-x: hidden;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('rm.jpg') no-repeat center center/cover fixed;
     }
     
     h1, h2, h3 {
@@ -68,7 +68,6 @@
       text-align: center;
     }
     
-    /* ===== BANNER MOSAICO ===== */
     .mosaic-banner {
       background: url('logomcqueen.jpg') repeat-x;
       background-size: auto 100%;
@@ -76,74 +75,12 @@
       width: 100%;
     }
     
-    /* ===== HEADER Y HERO ===== */
-    .hero {
-      position: relative;
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('mate.jpg') no-repeat center center/cover;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      padding: 0 20px;
-    }
-    
-    .hero-content {
-      max-width: 800px;
-      z-index: 1;
-    }
-    
-    .hero h1 {
-      font-size: 3.5rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-      margin-bottom: 1.5rem;
-      color: var(--secondary);
-    }
-    
-    .hero p {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-    }
-    
-    /* ===== SECCIÓN DE INTRODUCCIÓN ===== */
-    .intro {
-      background-color: var(--light);
-      position: relative;
-    }
-    
-    .intro-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 2rem;
-    }
-    
-    .intro-text {
-      flex: 1;
-      min-width: 300px;
-    }
-    
-    .intro-image {
-      flex: 1;
-      min-width: 300px;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-    
-    .intro-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    
-    /* ===== SECCIÓN DE SERVICIOS ===== */
-    .servicios {
-      background-color: white;
+    .servicios-detalle {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      padding: 3rem;
+      margin: 2rem 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
     
     .section-title {
@@ -208,224 +145,31 @@
       font-size: 1.5rem;
     }
     
-    /* ===== SECCIÓN DE CONTACTO ===== */
-    .contacto {
-      background: linear-gradient(to right, var(--primary), var(--accent));
-      color: white;
-      position: relative;
-    }
-    
-    .contacto::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23FFFFFF" fill-opacity="0.1"/></svg>') repeat;
-      opacity: 0.1;
-    }
-    
-    .contacto-content {
-      position: relative;
-      z-index: 1;
-    }
-    
-    .contacto .section-title {
-      color: white;
-    }
-    
-    .contacto-info {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    
-    .contacto-item {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 1.5rem;
-      border-radius: 10px;
-      text-align: center;
-      backdrop-filter: blur(5px);
-      flex: 1;
-      min-width: 250px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    
-    .contacto-item:hover {
-      transform: translateY(-5px);
-      background: rgba(255, 255, 255, 0.15);
-    }
-    
-    .contacto-item i {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--secondary);
-    }
-    
-    .contacto-item p {
-      margin: 0;
-      font-weight: bold;
-    }
-    
-    .redes-sociales {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    
-    /* ===== ESTILOS MEJORADOS PARA LOS MENÚS DESPLEGABLES ===== */
-    .social-dropdown {
-      position: relative;
+    .btn-volver {
       display: inline-block;
-    }
-    
-    .social-menu {
-      display: none;
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      padding: 10px;
-      min-width: 180px;
-      z-index: 100;
-    }
-    
-    .social-dropdown.active .social-menu {
-      display: block;
-      animation: fadeIn 0.3s ease;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateX(-50%) translateY(10px); }
-      to { opacity: 1; transform: translateX(-50%) translateY(0); }
-    }
-    
-    .social-option {
-      display: block;
-      padding: 8px 12px;
-      color: var(--dark);
+      margin-top: 2rem;
+      background: var(--accent);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
       text-decoration: none;
-      border-radius: 5px;
-      margin: 5px 0;
-      text-align: center;
       font-weight: bold;
-      transition: background 0.3s;
-    }
-    
-    .social-option:hover {
-      background: var(--secondary);
-      color: white;
-    }
-    
-    .social-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 50px;
-      height: 50px;
-      background: white;
-      color: var(--primary);
-      border-radius: 50%;
-      font-size: 1.5rem;
       transition: all 0.3s ease;
-      cursor: pointer;
     }
     
-    .social-dropdown.active .social-icon,
-    .social-dropdown:hover .social-icon {
-      transform: translateY(-5px);
-      background: var(--secondary);
-      color: white;
-    }
-    
-    /* ===== FOOTER ===== */
-    footer {
-      background: var(--dark);
-      color: white;
-      padding: 2rem 0;
-      text-align: center;
-      position: relative;
-    }
-    
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 1024px) {
-      .hero h1 {
-        font-size: 3rem;
-      }
+    .btn-volver:hover {
+      background: #0055aa;
+      transform: translateY(-3px);
     }
     
     @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      
-      .hero p {
-        font-size: 1.2rem;
-      }
-      
-      .intro-content, .contacto-info {
-        flex-direction: column;
+      .servicios-detalle {
+        padding: 2rem;
+        margin: 1rem;
       }
       
       .section-title {
         font-size: 2rem;
-      }
-      
-      .mosaic-banner {
-        height: 30px;
-      }
-      
-      .social-menu {
-        bottom: auto;
-        top: 100%;
-        left: 0;
-        transform: translateX(0);
-        min-width: 160px;
-      }
-      
-      .redes-sociales {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
-      
-      .hero p {
-        font-size: 1rem;
-      }
-      
-      .section-title {
-        font-size: 1.8rem;
-      }
-      
-      .servicios-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .mosaic-banner {
-        height: 20px;
-      }
-      
-      .social-icon {
-        width: 45px;
-        height: 45px;
-        font-size: 1.3rem;
-      }
-      
-      .contacto-item {
-        min-width: 200px;
       }
     }
   </style>
@@ -434,149 +178,86 @@
   <!-- BANNER MOSAICO SUPERIOR -->
   <div class="mosaic-banner"></div>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>¡Haz realidad el sueño de tu hijo!</h1>
-      <p>Convierte su fiesta en una aventura inolvidable con Rayo McQueen y Mate</p>
-      <a href="#contacto" class="btn">¡Quiero sorprender a mi hijo!</a>
-    </div>
-  </section>
-
-  <!-- INTRO SECTION -->
-  <section class="intro">
+  <!-- SECCIÓN DE SERVICIOS DETALLADA -->
+  <section>
     <div class="container">
-      <div class="intro-content">
-        <div class="intro-text">
-          <h2 class="section-title">La magia de Cars en su fiesta</h2>
-          <p>Imagina la cara de tu hijo cuando Rayo McQueen y Mate lleguen a su fiesta. Ese momento mágico quedará grabado en su memoria para siempre y te lo agradecerá toda la vida.</p>
-          <p>En <strong>Festejando con Rayo McQueen y Mate</strong> nos encargamos en crear una experiencia únicas donde los personajes favoritos de tus hijos cobran vida, así logrando que ese día tan especial para tí y tu hijo sea el mejor de su vida, sorprendelo con ésta gran sorpresa llena de diversión y recuerdos inolvidables para tu hijo y sus amigos.</p>
+      <div class="servicios-detalle">
+        <div class="text-center">
+          <h1 class="section-title">Nuestros Servicios</h1>
+          <p>Todo lo que necesitas para la fiesta perfecta de tu hijo</p>
         </div>
-        <div class="intro-image">
-          <img src="mate.jpg" alt="Niños felices con Rayo y Mate">
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- SERVICIOS SECTION -->
-  <section class="servicios">
-    <div class="container text-center">
-      <h2 class="section-title">¿Por qué elegirnos?</h2>
-      <p>Creemos que tu hijo merece una fiesta mágica que recordará por siempre y de eso nos encargamos nosotros</p>
-      
-      <div class="servicios-grid">
-        <div class="servicio-card">
-          <div class="servicio-img">
-            <img src="rm.jpg" alt="Rayo McQueen en fiesta infantil">
+        <div class="servicios-grid">
+          <div class="servicio-card">
+            <div class="servicio-img">
+              <img src="rm.jpg" alt="Show con Rayo McQueen">
+            </div>
+            <div class="servicio-content">
+              <h3>Show con Rayo McQueen</h3>
+              <p>Rayo McQueen interactúa con los niños, cuenta historias, toma fotos y crea momentos mágicos que recordarán por siempre.</p>
+            </div>
           </div>
-          <div class="servicio-content">
-            <h3>Personajes Auténticos</h3>
-            <p>Rayo McQueen y Mate como en la película harán creer a tus hijos que cobraron vida.</p>
+          
+          <div class="servicio-card">
+            <div class="servicio-img">
+              <img src="rm.jpg" alt="Aventura con Mate">
+            </div>
+            <div class="servicio-content">
+              <h3>Aventura con Mate</h3>
+              <p>Mate llega con sus ocurrencias divertidas, juegos temáticos y actividades que mantendrán a los niños entretenidos.</p>
+            </div>
+          </div>
+          
+          <div class="servicio-card">
+            <div class="servicio-img">
+              <img src="rm.jpg" alt="Sesión de fotos">
+            </div>
+            <div class="servicio-content">
+              <h3>Sesión de Fotos</h3>
+              <p>Fotos profesionales con Rayo y Mate para que cada familia tenga un recuerdo tangible de este día especial.</p>
+            </div>
+          </div>
+          
+          <div class="servicio-card">
+            <div class="servicio-img">
+              <img src="rm.jpg" alt="Juegos temáticos">
+            </div>
+            <div class="servicio-content">
+              <h3>Juegos Temáticos</h3>
+              <p>Competencias y juegos inspirados en Cars donde los niños podrán divertirse como sus personajes favoritos.</p>
+            </div>
+          </div>
+          
+          <div class="servicio-card">
+            <div class="servicio-img">
+              <img src="rm.jpg" alt="Decoración especial">
+            </div>
+            <div class="servicio-content">
+              <h3>Decoración Temática</h3>
+              <p>Transformamos el espacio en Radiador Springs para una experiencia completamente inmersiva.</p>
+            </div>
+          </div>
+          
+          <div class="servicio-card">
+            <div class="servicio-img">
+              <img src="rm.jpg" alt="Recuerdos personalizados">
+            </div>
+            <div class="servicio-content">
+              <h3>Recuerdos Personalizados</h3>
+              <p>Detalles especiales conmemorativos para que los invitados se lleven un pedacito de la magia a casa.</p>
+            </div>
           </div>
         </div>
-        
-        <div class="servicio-card">
-          <div class="servicio-img">
-            <img src="rm.jpg" alt="Diversión garantizada">
-          </div>
-          <div class="servicio-content">
-            <h3>Diversión Garantizada</h3>
-            <p>Juegos, fotos, canciones y actividades temáticas que mantendrán a todos los niños entretenidos y felices.</p>
-          </div>
-        </div>
-        
-        <div class="servicio-card">
-          <div class="servicio-img">
-            <img src="rm.jpg" alt="Recuerdos para toda la vida">
-          </div>
-          <div class="servicio-content">
-            <h3>Recuerdos Eternos</h3>
-            <p>Fotos y momentos que se convertirán en tesoros familiares y la historia favorita que tu hijo querrá contar una y otra vez.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- CONTACTO SECTION -->
-  <section class="contacto" id="contacto">
-    <div class="container text-center">
-      <div class="contacto-content">
-        <h2 class="section-title">¡Hagamos mágica la fiesta!</h2>
-        <p>Cotiza sin costo y regálale a tu hijo el mejor día de su vida</p>
-        
-        <div class="contacto-info">
-          <!-- Teléfono -->
-          <div class="contacto-item" onclick="llamarTelefono()">
-            <i class="fas fa-phone"></i>
-            <h3>Teléfono</h3>
-            <p>56-1070-3139</p>
-            <small style="font-size: 12px; opacity: 0.8;">(Click para llamar)</small>
-          </div>
-          
-          <!-- Email -->
-          <div class="contacto-item" onclick="enviarEmail()">
-            <i class="fas fa-envelope"></i>
-            <h3>Email</h3>
-            <p>mate.0413qro@gmail.com</p>
-            <small style="font-size: 12px; opacity: 0.8;">(Click para escribir)</small>
-          </div>
-          
-          <!-- Ubicación -->
-          <div class="contacto-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <h3>Ubicación</h3>
-            <p>Santiago de Querétaro, Qro.</p>
-          </div>
-        </div>
-        
-        <div class="redes-sociales">
-          <!-- Menú desplegable para Facebook -->
-          <div class="social-dropdown">
-            <div class="social-icon" onclick="toggleMenu(this.parentNode, event)">
-              <i class="fab fa-facebook-f"></i>
-            </div>
-            <div class="social-menu">
-              <a href="https://www.facebook.com/profile.php?id=61557902633630" class="social-option" target="_blank">Fanpage Principal</a>
-            </div>
-          </div>
-          
-          <!-- Menú desplegable para Instagram -->
-          <div class="social-dropdown">
-            <div class="social-icon" onclick="toggleMenu(this.parentNode, event)">
-              <i class="fab fa-instagram"></i>
-            </div>
-            <div class="social-menu">
-              <a href="https://www.instagram.com/rayomqqro?utm_source=ig_web_button_share_sheet&igsh=MWdoMnB3emM2cnk2dg==" class="social-option" target="_blank">@rayo_oficial</a>
-              <a href="https://www.instagram.com/mate_remolcandoysalvando?utm_source=ig_web_button_share_sheet&igsh=MTRqOHg3MHFpNXhqcw==" class="social-option" target="_blank">@mate_oficial</a>
-            </div>
-          </div>
-          
-          <!-- Menú desplegable para TikTok -->
-          <div class="social-dropdown">
-            <div class="social-icon" onclick="toggleMenu(this.parentNode, event)">
-              <i class="fab fa-tiktok"></i>
-            </div>
-            <div class="social-menu">
-              <a href="https://www.tiktok.com/@mate_remolcandoysalvando" class="social-option" target="_blank">@mate_remolcandoysalvando</a>
-              <a href="https://www.tiktok.com/@rayo.mcqueen.qro?is_from_webapp=1&sender_device=pc" class="social-option" target="_blank">@rayo_mcqueen_qro</a>
-            </div>
-          </div>
-          
-          <!-- WhatsApp con mensaje predefinido -->
-          <div class="social-dropdown">
-            <div class="social-icon" onclick="abrirWhatsApp()">
-              <i class="fab fa-whatsapp"></i>
-            </div>
-          </div>
+        <div class="text-center">
+          <a href="index.html" class="btn-volver">← Volver a la página principal</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer>
+  <footer style="background: var(--dark); color: white; padding: 2rem 0; text-align: center;">
     <div class="container">
       <p>&copy; 2025 Festejando con Rayo y Mate. Todos los derechos reservados.</p>
     </div>
@@ -584,68 +265,5 @@
 
   <!-- BANNER MOSAICO INFERIOR -->
   <div class="mosaic-banner"></div>
-
-  <script>
-    // Variable para controlar el menú activo
-    let menuAbierto = null;
-    
-    // Función para mostrar/ocultar menús
-    function toggleMenu(elemento, event) {
-      // Prevenir que el clic se propague
-      if (event) event.stopPropagation();
-      
-      // Si ya hay un menú abierto y es diferente al que queremos abrir
-      if (menuAbierto && menuAbierto !== elemento) {
-        menuAbierto.classList.remove('active');
-      }
-      
-      // Alternar el menú actual
-      elemento.classList.toggle('active');
-      
-      // Actualizar la variable del menú abierto
-      if (elemento.classList.contains('active')) {
-        menuAbierto = elemento;
-      } else {
-        menuAbierto = null;
-      }
-    }
-    
-    // Cerrar menús al hacer clic fuera de ellos
-    document.addEventListener('click', function(event) {
-      if (menuAbierto && !menuAbierto.contains(event.target)) {
-        menuAbierto.classList.remove('active');
-        menuAbierto = null;
-      }
-    });
-    
-    // Función para llamar por teléfono
-    function llamarTelefono() {
-      window.location.href = 'tel:+525610703139';
-    }
-    
-    // Función para enviar email con mensaje predefinido
-    function enviarEmail() {
-      const asunto = 'Cotización para fiesta infantil';
-      const cuerpo = '¡Hola! Estoy interesado(a) en sus servicios para la fiesta de mi hijo(a). Me gustaría conocer paquetes y disponibilidad.';
-      window.location.href = `mailto:mate.0413qro@gmail.com?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
-    }
-    
-    // Función para abrir WhatsApp con mensaje predefinido
-    function abrirWhatsApp() {
-      const mensaje = '¡Hola! Estoy interesado(a) en sus servicios para la fiesta de mi hijo(a). ¿Podrían enviarme información?';
-      window.open(`https://wa.me/525610703139?text=${encodeURIComponent(mensaje)}`, '_blank');
-    }
-    
-    // Cerrar menús al tocar un enlace (útil para móviles)
-    document.querySelectorAll('.social-option').forEach(enlace => {
-      enlace.addEventListener('click', function() {
-        if (menuAbierto) {
-          menuAbierto.classList.remove('active');
-          menuAbierto = null;
-        }
-      });
-    });
-  </script>
 </body>
 </html>
-
