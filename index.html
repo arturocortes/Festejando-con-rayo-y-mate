@@ -141,7 +141,7 @@
       display: block;
     }
     
-    /* ===== SECCIÓN DE SERVICIOS ===== */
+    /* ===== SECCIÓN DE SERVicios ===== */
     .servicios {
       background-color: white;
     }
@@ -281,12 +281,24 @@
       backdrop-filter: blur(5px);
       flex: 1;
       min-width: 250px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .contacto-item:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.15);
     }
     
     .contacto-item i {
       font-size: 2rem;
       margin-bottom: 1rem;
       color: var(--secondary);
+    }
+    
+    .contacto-item p {
+      margin: 0;
+      font-weight: bold;
     }
     
     .redes-sociales {
@@ -440,6 +452,10 @@
         height: 45px;
         font-size: 1.3rem;
       }
+      
+      .contacto-item {
+        min-width: 200px;
+      }
     }
   </style>
 </head>
@@ -520,18 +536,23 @@
         <p>¿Listo para hacer de tu evento algo extraordinario? ¡Escríbenos!</p>
         
         <div class="contacto-info">
-          <div class="contacto-item">
+          <!-- Teléfono -->
+          <div class="contacto-item" onclick="llamarTelefono()">
             <i class="fas fa-phone"></i>
             <h3>Teléfono</h3>
             <p>56-1070-3139</p>
+            <small style="font-size: 12px; opacity: 0.8;">(Click para llamar)</small>
           </div>
           
-          <div class="contacto-item">
+          <!-- Email -->
+          <div class="contacto-item" onclick="enviarEmail()">
             <i class="fas fa-envelope"></i>
             <h3>Email</h3>
             <p>mate.0413qro@gmail.com</p>
+            <small style="font-size: 12px; opacity: 0.8;">(Click para escribir)</small>
           </div>
           
+          <!-- Ubicación -->
           <div class="contacto-item">
             <i class="fas fa-map-marker-alt"></i>
             <h3>Ubicación</h3>
@@ -572,13 +593,10 @@
             </div>
           </div>
           
-          <!-- Menú desplegable para WhatsApp -->
+          <!-- WhatsApp con mensaje predefinido -->
           <div class="social-dropdown">
-            <div class="social-icon" onclick="toggleMenu(this.parentNode, event)">
+            <div class="social-icon" onclick="abrirWhatsApp()">
               <i class="fab fa-whatsapp"></i>
-            </div>
-            <div class="social-menu">
-              <a href="https://wa.me/5610703139" class="social-option" target="_blank">Reservación y Cotizaciones</a>
             </div>
           </div>
         </div>
@@ -625,6 +643,24 @@
         menuAbierto = null;
       }
     });
+    
+    // Función para llamar por teléfono
+    function llamarTelefono() {
+      window.location.href = 'tel:+525610703139';
+    }
+    
+    // Función para enviar email con mensaje predefinido
+    function enviarEmail() {
+      const asunto = 'Solicitud de información';
+      const cuerpo = '¡Hola! Quisiera más información sobre sus servicios para eventos.';
+      window.location.href = `mailto:mate.0413qro@gmail.com?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+    }
+    
+    // Función para abrir WhatsApp con mensaje predefinido
+    function abrirWhatsApp() {
+      const mensaje = '¡Hola! Quisiera más información sobre sus servicios para eventos.';
+      window.open(`https://wa.me/525610703139?text=${encodeURIComponent(mensaje)}`, '_blank');
+    }
     
     // Cerrar menús al tocar un enlace (útil para móviles)
     document.querySelectorAll('.social-option').forEach(enlace => {
