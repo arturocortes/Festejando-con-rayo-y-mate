@@ -296,7 +296,7 @@
       margin-top: 2rem;
     }
     
-    /* ===== ESTILOS PARA LOS MENÚS DESPLEGABLES ===== */
+    /* ===== ESTILOS MEJORADOS PARA LOS MENÚS DESPLEGABLES ===== */
     .social-dropdown {
       position: relative;
       display: inline-block;
@@ -314,6 +314,10 @@
       padding: 10px;
       min-width: 180px;
       z-index: 100;
+    }
+    
+    .social-dropdown.active .social-menu {
+      display: block;
     }
     
     .social-dropdown:hover .social-menu {
@@ -348,8 +352,10 @@
       border-radius: 50%;
       font-size: 1.5rem;
       transition: all 0.3s ease;
+      cursor: pointer;
     }
     
+    .social-dropdown.active .social-icon,
     .social-dropdown:hover .social-icon {
       transform: translateY(-5px);
       background: var(--secondary);
@@ -395,6 +401,14 @@
       .social-menu {
         bottom: auto;
         top: 100%;
+        left: 0;
+        transform: translateX(0);
+        min-width: 160px;
+      }
+      
+      .redes-sociales {
+        flex-wrap: wrap;
+        justify-content: center;
       }
     }
     
@@ -419,8 +433,10 @@
         height: 20px;
       }
       
-      .redes-sociales {
-        flex-wrap: wrap;
+      .social-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
       }
     }
   </style>
@@ -523,7 +539,7 @@
         
         <div class="redes-sociales">
           <!-- Menú desplegable para Facebook -->
-          <div class="social-dropdown">
+          <div class="social-dropdown" onclick="toggleMenu(this)">
             <div class="social-icon">
               <i class="fab fa-facebook-f"></i>
             </div>
@@ -533,7 +549,7 @@
           </div>
           
           <!-- Menú desplegable para Instagram -->
-          <div class="social-dropdown">
+          <div class="social-dropdown" onclick="toggleMenu(this)">
             <div class="social-icon">
               <i class="fab fa-instagram"></i>
             </div>
@@ -544,7 +560,7 @@
           </div>
           
           <!-- Menú desplegable para TikTok -->
-          <div class="social-dropdown">
+          <div class="social-dropdown" onclick="toggleMenu(this)">
             <div class="social-icon">
               <i class="fab fa-tiktok"></i>
             </div>
@@ -555,7 +571,7 @@
           </div>
           
           <!-- Menú desplegable para WhatsApp -->
-          <div class="social-dropdown">
+          <div class="social-dropdown" onclick="toggleMenu(this)">
             <div class="social-icon">
               <i class="fab fa-whatsapp"></i>
             </div>
@@ -574,5 +590,35 @@
       <p>&copy; 2025 Festejando con Rayo y Mate. Todos los derechos reservados.</p>
     </div>
   </footer>
+
+  <script>
+    // Función para mostrar/ocultar menús en móviles
+    function toggleMenu(element) {
+      // Solo aplicar en móviles
+      if (window.innerWidth <= 768) {
+        // Cerrar otros menús abiertos
+        document.querySelectorAll('.social-dropdown.active').forEach(item => {
+          if (item !== element) {
+            item.classList.remove('active');
+          }
+        });
+        
+        // Abrir/cerrar el menú clickeado
+        element.classList.toggle('active');
+      }
+    }
+    
+    // Cerrar menús al hacer clic fuera de ellos
+    document.addEventListener('click', function(event) {
+      if (window.innerWidth <= 768) {
+        const dropdowns = document.querySelectorAll('.social-dropdown');
+        dropdowns.forEach(dropdown => {
+          if (!dropdown.contains(event.target)) {
+            dropdown.classList.remove('active');
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
