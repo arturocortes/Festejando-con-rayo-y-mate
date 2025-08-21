@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Festejando con Rayo y Mate</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Variables de colores */
+    :root {
+      --primary: #E10600; /* Rojo como Rayo McQueen */
+      --secondary: #FFD700; /* Amarillo como Relámpago */
+      --dark: #1C1C1C;
+      --light: #f8f8f8;
+      --accent: #0066CC; /* Azul como Mate */
+    }
+    
+    /* Estilos generales */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Arial', sans-serif;
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+      margin-bottom: 1rem;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+      background: #c10500;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    section {
+      padding: 5rem 0;
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+    
+    /* ===== BANNER MOSAICO ===== */
+    .mosaic-banner {
+      background: url('https://noticias.coches.com/wp-content/uploads/2020/07/logo-mcqueen-700x394.jpg') repeat-x;
+      background-size: auto 100%;
+      height: 40px;
+      width: 100%;
+    }
+    
+    /* ===== HEADER Y HERO ===== */
+    .hero {
+      position: relative;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('mate.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 0 20px;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      z-index: 1;
+    }
+    
+    .hero h1 {
+      font-size: 4rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      margin-bottom: 1.5rem;
+      color: var(--secondary);
+    }
+    
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+    
+    /* ===== SECCIÓN DE INTRODUCCIÓN ===== */
+    .intro {
+      background-color: var(--light);
+      position: relative;
+    }
+    
+    .intro-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    
+    .intro-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .intro-image {
+      flex: 1;
+      min-width: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .intro-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* ===== SECCIÓN DE SERVICIOS ===== */
+    .servicios {
+      background-color: white;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60%;
+      height: 4px;
+      background: var(--secondary);
+    }
+    
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .servicio-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .servicio-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .servicio-img {
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .servicio-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .servicio-card:hover .servicio-img img {
+      transform: scale(1.1);
+    }
+    
+    .servicio-content {
+      padding: 1.5rem;
+    }
+    
+    .servicio-content h3 {
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+    
+    /* ===== GALERÍA ===== */
+    .galeria {
+      background-color: var(--light);
+    }
+    
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    
+    .galeria-item {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      height: 250px;
+    }
+    
+    .galeria-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .galeria-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    /* ===== SECCIÓN DE CONTACTO ===== */
+    .contacto {
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      color: white;
+      position: relative;
+    }
+    
+    .contacto::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('pattern.png') repeat;
+      opacity: 0.1;
+    }
+    
+    .contacto-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .contacto .section-title {
+      color: white;
+    }
+    
+    .contacto-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .contacto-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+      backdrop-filter: blur(5px);
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    .contacto-item i {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+    }
+    
+    .redes-sociales {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    /* ===== ESTILOS PARA LOS MENÚS DESPLEGABLES ===== */
+    .social-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .social-menu {
+      display: none;
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      padding: 10px;
+      min-width: 180px;
+      z-index: 100;
+    }
+    
+    .social-dropdown:hover .social-menu {
+      display: block;
+    }
+    
+    .social-option {
+      display: block;
+      padding: 8px 12px;
+      color: var(--dark);
+      text-decoration: none;
+      border-radius: 5px;
+      margin: 5px 0;
+      text-align: center;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    
+    .social-option:hover {
+      background: var(--secondary);
+      color: white;
+    }
+    
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: white;
+      color: var(--primary);
+      border-radius: 50%;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-dropdown:hover .social-icon {
+      transform: translateY(-5px);
+      background: var(--secondary);
+      color: white;
+    }
+    
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.2rem;
+      }
+      
+      .intro-content, .contacto-info {
+        flex-direction: column;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .mosaic-banner {
+        height: 30px;
+      }
+      
+      .social-menu {
+        bottom: auto;
+        top: 100%;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .servicios-grid, .galeria-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .mosaic-banner {
+        height: 20px;
+      }
+      
+      .redes-sociales {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- BANNER MOSAICO -->
+  <div class="mosaic-banner"></div>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>¡Festejando con Rayo y Mate!</h1>
+      <p>Transformamos cada ocasión en una experiencia única e inolvidable</p>
+      <a href="#contacto" class="btn">Contáctanos</a>
+    </div>
+  </section>
+
+  <!-- INTRO SECTION -->
+  <section class="intro">
+    <div class="container">
+      <div class="intro-content">
+        <div class="intro-text">
+          <h2 class="section-title">Nuestra pasión</h2>
+          <p>Hacer de tu evento un recuerdo inolvidable. En Festejando con Rayo y Mate nos dedicamos a transformar cada ocasión en una experiencia única. Ya sea una boda, cumpleaños o la promoción de tu negocio, nuestro objetivo es que tu celebración sea especial y memorable.</p>
+          <p>Movemos la energía de Rayo McQueen y Mate directamente a tu fiesta, creando momentos únicos que quedarán en el corazón de tus invitados.</p>
+        </div>
+        <div class="intro-image">
+          <img src="mate.jpg" alt="Fiesta con Rayo y Mate">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS SECTION -->
+  <section class="servicios">
+    <div class="container text-center">
+      <h2 class="section-title">Lo que ofrecemos</h2>
+      <p>Llevamos la magia de Rayo McQueen y Mate directamente a tu celebración</p>
+      
+      <div class="servicios-grid">
+        <div class="servicio-card">
+          <div class="servicio-img">
+            <img src="rm.jpg" alt="Fiestas infantiles">
+          </div>
+          <div class="servicio-content">
+            <h3>Fiestas Infantiles</h3>
+            <p>Celebraciones mágicas con los personajes favoritos de los niños, llenas de diversión y entretenimiento.</p>
+          </div>
+        </div>
+        
+        <div class="servicio-card">
+          <div class="servicio-img">
+            <img src="evento-empresarial.jpg" alt="Eventos empresariales">
+          </div>
+          <div class="servicio-content">
+            <h3>Eventos Empresariales</h3>
+            <p>Impresiona a tus clientes y empleados con una experiencia temática única que promueve tu negocio.</p>
+          </div>
+        </div>
+        
+        <div class="servicio-card">
+          <div class="servicio-img">
+            <img src="boda-tematica.jpg" alt="Bodas temáticas">
+          </div>
+          <div class="servicio-content">
+            <h3>Bodas Temáticas</h3>
+            <p>Haz de tu boda una celebración única con temática de Cars que harán tu día aún más especial.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO SECTION -->
+  <section class="contacto" id="contacto">
+    <div class="container text-center">
+      <div class="contacto-content">
+        <h2 class="section-title">Contáctanos</h2>
+        <p>¿Listo para hacer de tu evento algo extraordinario? ¡Escríbenos!</p>
+        
+        <div class="contacto-info">
+          <div class="contacto-item">
+            <i class="fas fa-phone"></i>
+            <h3>Teléfono</h3>
+            <p>56-1070-3139</p>
+          </div>
+          
+          <div class="contacto-item">
+            <i class="fas fa-envelope"></i>
+            <h3>Email</h3>
+            <p>mate.0413qro@gmail.com</p>
+          </div>
+          
+          <div class="contacto-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Ubicación</h3>
+            <p>Santiago de Querétaro, Qro.</p>
+          </div>
+        </div>
+        
+        <div class="redes-sociales">
+          <!-- Menú desplegable para Facebook -->
+          <div class="social-dropdown">
+            <div class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </div>
+            <div class="social-menu">
+              <a href="https://www.facebook.com/profile.php?id=61557902633630" class="social-option" target="_blank">Fanpage Principal</a>
+            </div>
+          </div>
+          
+          <!-- Menú desplegable para Instagram -->
+          <div class="social-dropdown">
+            <div class="social-icon">
+              <i class="fab fa-instagram"></i>
+            </div>
+            <div class="social-menu">
+              <a href="https://www.instagram.com/rayomqqro?utm_source=ig_web_button_share_sheet&igsh=MWdoMnB3emM2cnk2dg==" class="social-option" target="_blank">@rayo_oficial</a>
+              <a href="https://www.instagram.com/mate_remolcandoysalvando?utm_source=ig_web_button_share_sheet&igsh=MTRqOHg3MHFpNXhqcw==" class="social-option" target="_blank">@mate_oficial</a>
+            </div>
+          </div>
+          
+          <!-- Menú desplegable para TikTok -->
+          <div class="social-dropdown">
+            <div class="social-icon">
+              <i class="fab fa-tiktok"></i>
+            </div>
+            <div class="social-menu">
+              <a href="https://www.tiktok.com/@mate_remolcandoysalvando" class="social-option" target="_blank">@mate_remolcandoysalvando</a>
+              <a href="https://www.tiktok.com/@rayo.mcqueen.qro?is_from_webapp=1&sender_device=pc" class="social-option" target="_blank">@rayo_mcqueen_qro</a>
+            </div>
+          </div>
+          
+          <!-- Menú desplegable para WhatsApp -->
+          <div class="social-dropdown">
+            <div class="social-icon">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <div class="social-menu">
+              <a href="https://wa.me/5610703139" class="social-option" target="_blank">Reservación y Cotizaciones</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Festejando con Rayo y Mate. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>
