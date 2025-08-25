@@ -345,6 +345,33 @@
       background: var(--secondary);
       color: white;
     }
+
+    /* ===== ESTILOS PARA EL BOTÓN DE MÚSICA ===== */
+    #boton-musica {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 25px;
+      background-color: var(--primary);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      font-size: 14px;
+      transition: all 0.3s ease;
+      font-family: 'Arial', sans-serif;
+    }
+    #boton-musica:hover {
+      background-color: #b30500;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+    }
+    #boton-musica:active {
+      transform: translateY(0);
+    }
     
     /* ===== FOOTER ===== */
     footer {
@@ -395,6 +422,13 @@
         flex-wrap: wrap;
         justify-content: center;
       }
+
+      #boton-musica {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 15px;
+        font-size: 12px;
+      }
     }
     
     @media (max-width: 480px) {
@@ -426,6 +460,13 @@
       
       .contacto-item {
         min-width: 200px;
+      }
+
+      #boton-musica {
+        bottom: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 11px;
       }
     }
   </style>
@@ -585,6 +626,12 @@
   <!-- BANNER MOSAICO INFERIOR -->
   <div class="mosaic-banner"></div>
 
+  <!-- BOTÓN Y AUDIO PARA MÚSICA DE FONDO -->
+  <button id="boton-musica">🔊 Música ON</button>
+  <audio id="audio-fondo" loop>
+    <source src="Life Is A Highway.mp3" type="audio/mpeg">
+  </audio>
+
   <script>
     // Variable para controlar el menú activo
     let menuAbierto = null;
@@ -645,10 +692,69 @@
         }
       });
     });
+
+    // ===== CÓDIGO PARA LA MÚSICA DE FONDO =====
+    document.addEventListener('DOMContentLoaded', function() {
+        const botonMusica = document.getElementById('boton-musica');
+        const audioFondo = document.getElementById('audio-fondo');
+        let musicaEncendida = true; // Inicia como true porque empieza reproduciendo
+
+        // Configura el audio para que se repita infinitamente
+        audioFondo.loop = true;
+
+        // Intenta reproducir automáticamente al cargar la página
+        function iniciarMusicaAutomatica() {
+            // Para evitar problemas con políticas de autoplay, intentamos reproducir después de una interacción
+            // pero mostramos el botón como activado desde el principio
+            botonMusica.textContent = '🔊 Música ON';
+            musicaEncendida = true;
+            
+            // Intentamos reproducir después de un pequeño retraso
+            setTimeout(() => {
+                audioFondo.play().then(() => {
+                    console.log("Música reproduciéndose automáticamente");
+                }).catch(error => {
+                    console.log("Autoplay bloqueado. Requiere interacción del usuario.");
+                    botonMusica.textContent = '▶️ Activar Música';
+                    musicaEncendida = false;
+                });
+            }, 1000);
+        }
+
+        // Intentar reproducir automáticamente al cargar
+        iniciarMusicaAutomatica();
+
+        // Función para toggle (encender/apagar) la música
+        function toggleMusica() {
+            if (musicaEncendida) {
+                audioFondo.pause();
+                botonMusica.textContent = '🔊 Música OFF';
+            } else {
+                audioFondo.play().then(() => {
+                    botonMusica.textContent = '🔊 Música ON';
+                    musicaEncendida = true;
+                }).catch(error => {
+                    console.log("Error al reproducir música:", error);
+                    botonMusica.textContent = '❌ Error';
+                });
+            }
+            musicaEncendida = !musicaEncendida;
+        }
+
+        // Asigna la función al clic del botón
+        botonMusica.addEventListener('click', toggleMusica);
+
+        // También permite activar la música al hacer clic en cualquier parte de la página
+        // si el autoplay fue bloqueado
+        document.addEventListener('click', function(event) {
+            if (!musicaEncendida && event.target !== botonMusica) {
+                audioFondo.play().then(() => {
+                    botonMusica.textContent = '🔊 Música ON';
+                    musicaEncendida = true;
+                });
+            }
+        });
+    });
   </script>
 </body>
 </html>
-
-
-
-
